@@ -3,14 +3,31 @@
 // Add a method setYear(newYear) that updates the year only if newYear >= the current year.
 
 class Car {
-  // YOUR CODE HERE
+  #make
+  #model
+  #year
+  constructor(make, model, year) {
+    this.#make = make
+    this.#model = model
+    this.#year = year
+  }
+
+  setYear(val) {
+    if (this.#year > val) {
+      return
+    }
+    this.#year = val
+  }
+
+  getCarInfo() {
+    return `Make: ${this.#make}, Model: ${this.#model}, Year: ${this.#year}`
+  }
 }
 
-
 // TEST CASE / DRIVER CODE
-const car1 = new Car("Toyota", "Corolla", 2010);
-console.log(car1.getCarInfo()); // Expected output: "Make: Toyota, Model: Corolla, Year: 2010"
-car1.setYear(2015); // Should update the year
-console.log(car1.getCarInfo()); // Expected output: "Make: Toyota, Model: Corolla, Year: 2015"
-car1.setYear(2005); // Should not update the year
-console.log(car1.getCarInfo()); // Expected output: "Make: Toyota, Model: Corolla, Year: 2015"
+const car1 = new Car("Toyota", "Corolla", 2010)
+console.log(car1.getCarInfo()) // Expected output: "Make: Toyota, Model: Corolla, Year: 2010"
+car1.setYear(2015) // Should update the year
+console.log(car1.getCarInfo()) // Expected output: "Make: Toyota, Model: Corolla, Year: 2015"
+car1.setYear(2005) // Should not update the year
+console.log(car1.getCarInfo()) // Expected output: "Make: Toyota, Model: Corolla, Year: 2015"

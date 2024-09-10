@@ -5,20 +5,45 @@
 // - A getter and setter for the title, with the setter allowing changes only if the new title is not empty.
 
 class Book {
-  // YOUR CODE HERE
+  #title
+  #author
+  #price
+  constructor(title, author, price) {
+    this.#title = title
+    this.#author = author
+    this.#price = price
+  }
+
+  addDiscount(discount) {
+    this.#price -= this.#price * (discount / 100)
+  }
+
+  get price() {
+    return this.#price
+  }
+
+  get title() {
+    return this.#title
+  }
+
+  set title(title) {
+    if (!title) {
+      return
+    }
+    this.#title = title
+  }
 }
 
-
 // TEST CASE / DRIVER CODE
-const book1 = new Book("JavaScript Basics", "John Doe", 50);
-console.log(book1.title); // Expected output: "JavaScript Basics"
-console.log(book1.price); // Expected output: 50
+const book1 = new Book("JavaScript Basics", "John Doe", 50)
+console.log(book1.title) // Expected output: "JavaScript Basics"
+console.log(book1.price) // Expected output: 50
 
-book1.addDiscount(10); // Apply 10% discount
-console.log(book1.price); // Expected output: 45 (after 10% discount)
+book1.addDiscount(10) // Apply 10% discount
+console.log(book1.price) // Expected output: 45 (after 10% discount)
 
-book1.title = ""; // Should not change the title
-console.log(book1.title); // Expected output: "JavaScript Basics"
+book1.title = "" // Should not change the title
+console.log(book1.title) // Expected output: "JavaScript Basics"
 
-book1.title = "Advanced JavaScript"; // Should update the title
-console.log(book1.title); // Expected output: "Advanced JavaScript"
+book1.title = "Advanced JavaScript" // Should update the title
+console.log(book1.title) // Expected output: "Advanced JavaScript"
